@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="materialize/css/materialize.css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<h3>
+    <span>
+        &ensp;x=<span id="x">1</span>
+    </span>
+    <span style="float: right">
+        dx/dt=1/(e-a/b)=<span id="dx"></span>&ensp;
+    </span>
+</h3>
+<h5>
+    <span>
+        &ensp;a=<span id="a">2</span>
+        &ensp;b=<span id="b">1</span>
+
+    </span>
+    <span style="float: right">
+        e=<span id="e_val"></span>&ensp;
+        a/b=<span id="a_div_b"></span>&ensp;
+    </span>
+</h5>
+<div id="bar_bg" class="progress">
+    <div id="bar" class="determinate" style="width: 0%"></div>
+</div>
+<h3>
+    <span style="float: right">Reach x=<span id="end"></span></span>&ensp;
+</h3>
+&ensp;a:&ensp;
+<div class="input-field inline">
+    <input id="a_input" type="number" class="validate">
+</div>
+&ensp;b:&ensp;
+<div class="input-field inline">
+    <input id="b_input" type="number" class="validate">
+</div>
+<input id="set" type="submit" value="Set Variables" onclick="set_var()">
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
