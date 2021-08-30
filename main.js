@@ -17,15 +17,17 @@ function cut_decimal(x, n) {
 }
 
 function set_var() {
-    a = Number(document.getElementById("a_input").value);
-    if(a < 0) {
-        a = 0
+    temp_a = Number(document.getElementById("a_input").value);
+    if(temp_a < 0) {
+        temp_a = 0
     }
-    b = Number(document.getElementById("b_input").value);
-    if(b < 1) {
-        b = 1
+    temp_b = Number(document.getElementById("b_input").value);
+    if(temp_b < 1) {
+        temp_b = 1
     }
-    if(a+b <= gold[stage]) {
+    if(temp_a+temp_b <= gold[stage]) {
+        a = temp_a
+        b = temp_b
         calculate()
     } else {
         alert("You do not have enough gold!")
@@ -35,6 +37,8 @@ function set_var() {
 function next_stage() {
     stage++
     document.getElementById("next-stage").style.display = "none"
+    x = 0
+    document.getElementById("x").innerHTML = cut_decimal(x, 2)
     calculate()
 }
 
@@ -79,7 +83,7 @@ let x = 1
 let bar = 0
 let tick = 1
 let stage = 0
-let gold = [10, 100, 1000]
-let goal = [100, 1000, 10000]
+let gold = [10, 100, 10000]
+let goal = [150, 15000, 5e+8]
 calculate()
 let main_loop = setInterval(step, tick*1000)
