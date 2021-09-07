@@ -18,19 +18,21 @@ function cut_decimal(x, n) {
 
 function set_var() {
     temp_a = Number(document.getElementById("a_input").value);
-    if(temp_a < 0) {
-        temp_a = 0
-    }
     temp_b = Number(document.getElementById("b_input").value);
-    if(temp_b < 1) {
-        temp_b = 1
-    }
-    if(temp_a+temp_b <= gold[stage]) {
-        a = temp_a
-        b = temp_b
-        calculate()
+    if(temp_a < 0) {
+        alert("a cannot be smaller than 0!")
+    } else if(temp_b < 1) {
+        alert("b cannot be smaller than 1!")
+    } else if(Number.isInteger(temp_a) && Number.isInteger(temp_b)) {
+        if(temp_a+temp_b <= gold[stage]) {
+            a = temp_a
+            b = temp_b
+            calculate()
+        } else {
+            alert("You do not have enough gold!")
+        }
     } else {
-        alert("You do not have enough gold!")
+        alert("Variables should be integers!")
     }
 }
 
