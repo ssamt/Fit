@@ -16,29 +16,38 @@ function cut_decimal(x, n) {
     return Math.round(x*Math.pow(10, n))/Math.pow(10, n)
 }
 
+function show_alert(s) {
+    document.getElementById("alert").innerText = s
+}
+
+function hide_alert() {
+    document.getElementById("alert").innerText = ""
+}
+
 function set_var() {
     temp_a = Number(document.getElementById("a_input").value);
     temp_b = Number(document.getElementById("b_input").value);
     if(temp_a < 0) {
-        alert("a cannot be smaller than 0!")
+        show_alert("a cannot be smaller than 0!")
     } else if(temp_b < 1) {
-        alert("b cannot be smaller than 1!")
+        show_alert("b cannot be smaller than 1!")
     } else if(Number.isInteger(temp_a) && Number.isInteger(temp_b)) {
         if(temp_a+temp_b <= gold[stage]) {
             a = temp_a
             b = temp_b
+            hide_alert()
             calculate()
         } else {
-            alert("You do not have enough gold!")
+            show_alert("You do not have enough gold!")
         }
     } else {
-        alert("Variables should be integers!")
+        show_alert("Variables should be integers!")
     }
 }
 
 function next_stage() {
     stage++
-    document.getElementById("next-stage").style.display = "none"
+    document.getElementById("next_stage").className = "btn disabled"
     x = 0
     document.getElementById("x").innerHTML = cut_decimal(x, 2)
     calculate()
@@ -60,7 +69,7 @@ function step() {
     bar = progress(x, goal[stage])*100
     if(bar >= 100) {
         bar = 100
-        document.getElementById("next-stage").style.display = ""
+        document.getElementById("next_stage").className = "waves-effect waves-light btn"
     }
     if(bar <= -100) {
         bar = -100
@@ -75,6 +84,14 @@ function step() {
         document.getElementById("bar").style.width = (100+bar)+"%"
         document.getElementById("bar_bg").style.backgroundColor = "red"
         document.getElementById("bar").style.backgroundColor = "darkblue"
+    }
+}
+
+document.getElementById("inputs").addEventListener("keyup", enter)
+
+function enter(event) {
+    if(event.key === "Enter") {
+        document.getElementById("set").click()
     }
 }
 

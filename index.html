@@ -5,24 +5,27 @@
     <link href="main.css" rel="stylesheet">
     <link href="materialize/css/materialize.css" rel="stylesheet">
     <title>Fit - Idle Game</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 <h3>
     <span>
-        &ensp;x=<span id="x">1</span>
+        &ensp;\( x \): <span id="x">0</span>
     </span>
     <span style="float: right">
-        dx/dt=1/(e-a/b)=<span id="dx"></span>&ensp;
+        \( \frac{dx}{dt}=\frac{1}{e-\frac{a}{b}} \): <span id="dx">0</span>&ensp;
     </span>
 </h3>
+<br>
 <h5>
     <span>
         &ensp;&ensp;a=<span id="a">2</span>
         &ensp;&ensp;b=<span id="b">1</span>
     </span>
     <span style="float: right">
-        e=<span id="e_val"></span>&ensp;&ensp;
-        a/b=<span id="a_div_b"></span>&ensp;&ensp;
+        e= <span id="e_val"></span>&ensp;&ensp;
+        a/b= <span id="a_div_b"></span>&ensp;&ensp;
     </span>
 </h5>
 <br>
@@ -31,20 +34,24 @@
 </div>
 <h3>
     &ensp;Progress: <span id="progress">0</span>%
-    <span style="float: right">Gold increase at x=<span id="end"></span></span>&ensp;
+    <span style="float: right">\( G \) increase at x=<span id="end"></span></span>&ensp;&ensp;
 </h3>
-&ensp;<span class="vars">&ensp;a:&ensp;</span>
-<div class="input-field inline">
-    <input id="a_input" type="number" class="validate">
-</div>
-&ensp;<span class="vars">&ensp;b:&ensp;</span>
-<div class="input-field inline">
-    <input id="b_input" type="number" class="validate">
-</div>
-<input id="set" type="submit" value="Set Variables" onclick="set_var()">
-<input id="next-stage" type="submit" value="Next Stage!" style="display: none;" onclick="next_stage()">
+<span id="inputs">
+    &ensp;<span class="vars">&ensp;a:&ensp;</span>
+    <div class="input-field inline">
+        <input id="a_input" type="number" class="validate">
+    </div>
+    &ensp;<span class="vars">&ensp;b:&ensp;</span>
+    <div class="input-field inline">
+        <input id="b_input" type="number" class="validate">
+    </div>
+</span>
+&ensp;<input class="waves-effect waves-light btn" id="set" type="submit" value="Set Variables" onclick="set_var()">
+&ensp;<input class="btn disabled" id="next_stage" type="submit" value="Next Stage!" onclick="next_stage()">
+&ensp;<span id="alert"></span>
 <br>
-&ensp;&ensp;<span class="vars">a+b<=Gold=<span id="gold">10</span></span>
+&ensp;&ensp;<span class="vars">\( 0 \le a \), \( 1 \le b \), \( a+b \le G \)<br>
+&ensp;\( G \): <span id="gold"></span></span>
 <p class="note">Check <a href="https://github.com/ssamt/fit" target="_blank">Github</a> for instructions!</p>&ensp;
 <script type="text/javascript" src="main.js"></script>
 </body>
