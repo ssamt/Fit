@@ -20,7 +20,7 @@ function hide_alert() {
     document.getElementById("alert").innerText = ""
 }
 
-document.getElementById("inputs").addEventListener("keyup", enter)
+document.getElementById("enter").addEventListener("keyup", enter)
 
 function enter(event) {
     if(event.key === "Enter") {
@@ -63,10 +63,16 @@ class Level {
     run() {
         this.calculate()
         this.main_loop = setInterval(this.step.bind(this), this.tick*1000)
+        document.getElementById(this.formulas_id).style.display = ""
+        document.getElementById(this.inputs_id).style.display = ""
+        document.getElementById(this.constraints_id).style.display = ""
     }
 
     end() {
         clearInterval(this.main_loop)
+        document.getElementById(this.formulas_id).style.display = "none"
+        document.getElementById(this.inputs_id).style.display = "none"
+        document.getElementById(this.constraints_id).style.display = "none"
     }
 }
 
@@ -78,6 +84,9 @@ class Level1 extends Level {
         this.gold = [10, 100, 10000]
         this.goal = [150, 15000, 5e+8]
         this.max_stage = this.goal.length
+        this.formulas_id = "level1_formulas"
+        this.inputs_id = "level1_inputs"
+        this.constraints_id = "level1_constraints"
     }
 
     change_rate(a, b) {
