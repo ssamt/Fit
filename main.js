@@ -20,7 +20,7 @@ function hide_alert() {
     document.getElementById("alert").innerText = ""
 }
 
-document.getElementById("enter").addEventListener("keyup", enter)
+document.getElementById("inputs").addEventListener("keyup", enter)
 
 function enter(event) {
     if(event.key === "Enter") {
@@ -61,32 +61,29 @@ class Level {
     }
 
     run() {
-        this.calculate()
+        document.getElementById("formulas").innerHTML = this.formulas
+        document.getElementById("inputs").innerHTML = this.inputs
+        document.getElementById("constraints").innerHTML = this.constraints
         this.main_loop = setInterval(this.step.bind(this), this.tick*1000)
-        document.getElementById(this.formulas_id).style.display = ""
-        document.getElementById(this.inputs_id).style.display = ""
-        document.getElementById(this.constraints_id).style.display = ""
+        this.calculate()
     }
 
     end() {
         clearInterval(this.main_loop)
-        document.getElementById(this.formulas_id).style.display = "none"
-        document.getElementById(this.inputs_id).style.display = "none"
-        document.getElementById(this.constraints_id).style.display = "none"
     }
 }
 
 class Level1 extends Level {
     constructor() {
-        super();
+        super()
         this.a = 0
         this.b = 1
         this.gold = [10, 100, 10000]
         this.goal = [150, 15000, 5e+8]
         this.max_stage = this.goal.length
-        this.formulas_id = "level1_formulas"
-        this.inputs_id = "level1_inputs"
-        this.constraints_id = "level1_constraints"
+        this.formulas = document.getElementById("level1_formulas").innerHTML
+        this.inputs = document.getElementById("level1_inputs").innerHTML
+        this.constraints = document.getElementById("level1_constraints").innerHTML
     }
 
     change_rate(a, b) {
